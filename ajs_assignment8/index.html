@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grofers Checkout</title>
+    <style>
+        table,
+        td,
+        tr,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 10px;
+        }
+
+        tr,
+        td,
+        th {
+            padding-left: 20px;
+        }
+
+        input[data-ns-test="prices"] {
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> <i><b>GROFERS</b></i></h1>
+    <table id="groceryTable">
+        <thead>
+            <tr>
+                <th>
+                    <i><b>ITEM NAME</b></i>
+                </th>
+                <th>
+                    <i><b>ITEM PRICE</b></i>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <i><b>lays</b></i>
+                </td>
+                <td>
+                    <input type="number" data-ns-test="prices" value="10">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i><b>kurkure</b></i>
+                </td>
+                <td>
+                    <input type="number" data-ns-test="prices" value="20">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i><b>bingo</b></i>
+                </td>
+                <td>
+                    <input type="number" data-ns-test="prices" value="30">
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <script type="text/javascript">
+        let allInputs = document.querySelectorAll('input[data-ns-test="prices"]');
+        let totalPrice = 0;
+
+        for (input of allInputs) {
+            totalPrice += Number(input.value);
+        }
+
+        document.getElementById('groceryTable').addEventListener('change', calcSum);
+
+        function calcSum() {
+            totalPrice = 0;
+            for (input of allInputs) {
+                totalPrice += Number(input.value);
+            }
+            document.getElementById('total').innerHTML = totalPrice;
+
+        }
+
+        let totalPriceRow = document.createElement('tr');
+        totalPriceRow.innerHTML = `<td>Total</td>
+                        <td id = "total" data-ns-test="grandTotal">${totalPrice}</td>`;
+        document.getElementById('groceryTable').append(totalPriceRow);
+    </script>
+</body>
+
+</html>

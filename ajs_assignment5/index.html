@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="main">
+        <section id="screen">
+            <input type="text" id="display" value="">
+        </section>
+        <section>
+            <button class="block" id="block0">0</button>
+            <button class="block" id="block1">1</button>
+            <button class="block" id="block2">2</button>
+            <button class="block" id="block3">3</button>
+            <button class="block" id="block4">4</button>
+            <button class="block" id="block5">5</button>
+            <button class="block" id="block6">6</button>
+            <button class="block" id="block7">7</button>
+            <button class="block" id="block8">8</button>
+            <button class="block" id="block9">9</button>
+            <button class="block" id="dot"><strong>.</strong></button>
+            <button class="block equals-to" id="ans">=</button>
+
+        </section>
+
+        <section>
+            <button class="operators" id="plus">+</button>
+            <button class="operators" id="subtract">-</button>
+            <button class="operators" id="multiply">*</button>
+            <button class="operators" id="divide">/</button>
+
+            <button id="clear">RESET</button>
+
+        </section>
+    </div>
+
+
+</body>
+<script>
+    let buttons = document.querySelectorAll("button");
+    let screen = document.getElementById("display");
+
+    let screentext = "";
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", (event) => {
+            let btntext = event.target.innerText;
+
+            if (btntext == "*") {
+                screentext += btntext;
+                screen.value = screentext;
+
+            }
+            else if (btntext == "RESET") {
+                screentext = "";
+                screen.value = screentext;
+
+            } else if (btntext == "=") {
+                if (screen.value == "") {
+                    screentext = "NAN";
+                    screen.value = screentext;
+                }
+                if (screen.value == "") {
+                    screentext = "INFINITY";
+                    screen.value = screentext;
+                }
+                screen.value = eval(screentext);
+
+            } else {
+                screentext += btntext;
+                screen.value = screentext;
+            }
+
+        })
+    }
+</script>
+
+</html>

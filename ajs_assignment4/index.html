@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoping cart</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="container">
+        <h2>Shopping cart</h2>
+        <div>
+            <label for="item-name-input"><i><b>Item Name:</b></i></label>
+            <input type="text" id="item-name-input" name="name">
+        </div>
+        <div>
+            <label for="item-price-input "><i><b>Item Price:</b></i></label>
+            <input type="number" id="item-price-input" name="price">
+        </div>
+        <div>
+            <button id="btn">Add</button>
+        </div>
+        <table id="table">
+            <thead>
+                <tr>
+                    <th data-ns-test="item-name"><i><b>Item Name</b></i></th>
+                    <th data-ns-test="item-price"><i><b>Item Price</b></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-ns-test="grandTotal">grandTotal</td>
+                    <td id="result">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let count = 1;
+        let button = document.getElementById("btn");
+        button.addEventListener("click", Add);
+        function Add(){
+            let name = document.getElementById("item-name-input").value;
+            let price = document.getElementById("item-price-input").value;
+            price = Number(price);
+            let grandTotal = document.getElementById("result");
+            let total = grandTotal.innerText;
+            total = Number(total);
+            let table = document.getElementById("table");
+            let newRow = table.insertRow(count++);
+            let nameCell = newRow.insertCell(0);
+            let priceCell = newRow.insertCell(1);
+            nameCell.innerHTML = name;
+            priceCell.innerHTML = price;
+            grandTotal.innerHTML = total + price;
+            document.getElementById("item-name-input").value = "";
+            document.getElementById("item-price-input").value = "";
+        }
+    </script>
+</body>
+</html>

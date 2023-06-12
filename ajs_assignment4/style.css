@@ -1,0 +1,20 @@
+
+div{
+    margin-bottom: 5px;
+}
+table{
+    border-collapse: collapse;
+    text-align: center;
+    margin: 30px auto;
+}
+table,td,th{
+    border:1px solid black;
+    border-collapse: collapse;
+}
+td[data-ns-test="grandTotal"], #total{
+    font-weight: bolder;
+}
+#container{
+    margin: 50px auto;
+    text-align: center;
+}

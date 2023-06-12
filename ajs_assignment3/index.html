@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <div id="parent">
+        <p id="para1">text1</p>
+         <!-- This is a comment node! -->
+        <h1 id="heading">The h1 Element</h1>
+        <p id="para2">text2</p>
+        <p>Whitespace between elements are text nodes. Comments are also nodes.</p>
+
+        <p>The body element's child nodes are:</p>
+    </div>
+
+    <script>
+        let out1 = document.getElementById("parent").firstChild
+        console.log(out1)
+        let out2=document.getElementById("para1").nextSibling
+        console.log(out2)
+        let out3=document.getElementById("para1").nextElementSibling
+        console.log(out3)
+        let out4= document.getElementById("parent").lastChild
+        console.log(out4)
+        let out5= document.getElementById("parent").nextElementSibling
+        console.log(out5)
+    </script>
+
+</body>
+
+</html>
